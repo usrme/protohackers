@@ -32,6 +32,7 @@
   ok      github.com/usrme/protohackers/cmd/<problem name>    3.138s
   ```
 
+- move back to the root of the repository: `popd`;
 - build image: `docker build --tag <problem name> -f Dockerfile.<problem name> .`;
 - run container: `docker run -p 5000:5000 <problem name>`;
 - pass command:
