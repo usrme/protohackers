@@ -5,10 +5,10 @@ WORKDIR /usr/src/app
 COPY go.mod ./
 RUN go mod download && go mod verify
 COPY . .
-RUN go build -v -o /smoke-test ./cmd/smoke-test
+RUN go build -v -o /app .
 
 
 FROM debian:bookworm
 
-COPY --from=builder /smoke-test /usr/local/bin/
-CMD ["smoke-test"]
+COPY --from=builder /app /usr/local/bin/
+CMD ["app"]
