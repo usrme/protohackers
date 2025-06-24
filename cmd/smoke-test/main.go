@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	"io"
 	"log"
 	"net"
 
@@ -15,14 +15,6 @@ func main() {
 func echo(c net.Conn) error {
 	defer c.Close()
 
-	lines := bufio.NewReader(c)
-
-	for {
-		line, err := lines.ReadString('\n')
-		if err != nil {
-			return err
-		}
-
-		c.Write([]byte(line))
-	}
+	_, err := io.Copy(c, c)
+	return err
 }
