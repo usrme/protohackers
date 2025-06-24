@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io"
+	"bufio"
 	"log"
 	"net"
 
@@ -12,9 +12,17 @@ func main() {
 	log.Fatal(protohackers.ListenAndAccept(5000, echo))
 }
 
-func echo(conn net.Conn) error {
-	defer conn.Close()
+func echo(c net.Conn) error {
+	defer c.Close()
 
-	_, err := io.Copy(conn, conn)
-	return err
+	lines := bufio.NewReader(c)
+
+	for {
+		line, err := lines.ReadString('\n')
+		if err != nil {
+			return err
+		}
+
+		c.Write([]byte(line))
+	}
 }
