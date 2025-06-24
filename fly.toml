@@ -1,8 +1,3 @@
-# fly.toml app configuration file generated for protohkr on 2025-06-24T19:59:39+03:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'protohkr'
 primary_region = 'arn'
 
@@ -12,18 +7,18 @@ primary_region = 'arn'
 
 [[services]]
   internal_port = 5000
-  protocol = "tcp"
+  protocol = 'tcp'
 
   [[services.ports]]
-    port = "5000"
+    port = 5000
 
   [services.concurrency]
-    type = "connections"
+    type = 'connections'
     hard_limit = 200
     soft_limit = 150
 
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
   # The minimum amount that can be used
   memory_mb = 256
