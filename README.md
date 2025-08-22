@@ -13,6 +13,7 @@
   - more information about this requirement [here](https://community.fly.io/t/tcp-and-udp-service-ports-dont-work/9746) and [here](https://community.fly.io/t/announcement-shared-anycast-ipv4/9384/25);
 - deploy: `flyctl deploy --dockerfile Dockerfile.<problem name> --ha=false`;
   - see problem names under `cmd/` directory and [here](https://protohackers.com/problems).
+- find out currently allocated IP: `flyctl ips list`
 
 > [!important]
 > Any uncommitted changes will also be deployed.
@@ -51,3 +52,6 @@
   $ echo "hello world" | nc -w1 <app name>.fly.dev 5000
   hello world
   ```
+
+> [!note]
+> For testing in the Protohackers page, use the IP from `flyctl ips list` and pass the port 5000
